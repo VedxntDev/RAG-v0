@@ -1,0 +1,74 @@
+[
+  {
+    "id": "scenario_incomplete",
+    "name": "Semantically incomplete utterance",
+    "chunks": [
+      {"timestamp_s": 0.2, "text": "I need"},
+      {"timestamp_s": 0.5, "text": "to plan for"},
+      {"timestamp_s": 0.8, "text": "a customer workshop in"}
+    ],
+    "expected_decision": "WAIT",
+    "should_trigger_retrieval": false
+  },
+  {
+    "id": "scenario_provisional",
+    "name": "Mid-stream searchable stabilization",
+    "chunks": [
+      {"timestamp_s": 0.3, "text": "What is"},
+      {"timestamp_s": 0.6, "text": "the venue capacity for executive hall b"},
+      {"timestamp_s": 1.2, "text": "when we host our quarterly client meeting next month?"}
+    ],
+    "provisional_trigger_index": 1,
+    "expected_decision": "RETRIEVE",
+    "should_trigger_retrieval": true
+  },
+  {
+    "id": "scenario_compound",
+    "name": "Multi-intent compound request",
+    "chunks": [
+      {"timestamp_s": 0.5, "text": "What is the venue capacity for a customer workshop,"},
+      {"timestamp_s": 1.2, "text": "what is the event cancellation refund policy,"},
+      {"timestamp_s": 1.8, "text": "and what catering options are available?"}
+    ],
+    "expected_sub_query_count_min": 3,
+    "expected_decision": "RETRIEVE",
+    "should_trigger_retrieval": true
+  },
+  {
+    "id": "scenario_delta",
+    "name": "Late constraint addition",
+    "initial_turn": {
+      "utterance": "What are the manager pre-approval rules for business travel?",
+      "expected_citations": ["Doc_58 §1"]
+    },
+    "followup_turn": {
+      "utterance": "Oh, I forgot to mention, the trip was international.",
+      "expected_is_delta": true,
+      "expected_version": 2,
+      "expected_citations": ["Doc_58 §1", "Doc_58 §2"]
+    }
+  },
+  {
+    "id": "scenario_presentation",
+    "name": "Presentation-only turn suppression",
+    "initial_turn": {
+      "utterance": "What is the event cancellation refund policy?",
+      "expected_citations": ["Doc_31 §1", "Doc_31 §4"]
+    },
+    "followup_turn": {
+      "utterance": "Please reformat that answer as concise bullet points.",
+      "expected_decision": "NO_RETRIEVAL",
+      "should_trigger_retrieval": false,
+      "expected_version": 1
+    }
+  },
+  {
+    "id": "scenario_uncertainty",
+    "name": "Corpus insufficient evidence for sub-intent",
+    "chunks": [
+      {"timestamp_s": 0.4, "text": "What is the hotel per diem rate for tier-1 cities"},
+      {"timestamp_s": 1.1, "text": "and what is the policy on scuba diving expenses during offsites?"}
+    ],
+    "expected_uncertainty_flag": true
+  }
+]

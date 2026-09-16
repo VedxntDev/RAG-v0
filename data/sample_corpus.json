@@ -1,0 +1,56 @@
+[
+  {
+    "doc_id": "Doc_12",
+    "section": "§1",
+    "title": "Corporate Event & Workshop Venue Capacities",
+    "content": "For internal customer workshops and corporate training events, venue options are governed by capacity thresholds. Conference Room A supports up to 25 attendees and includes AV equipment. Executive Hall B accommodates up to 100 attendees with stage setup. Main Auditorium C supports up to 300 attendees for multi-track events."
+  },
+  {
+    "doc_id": "Doc_12",
+    "section": "§2",
+    "title": "Workshop Equipment & Setup Requirements",
+    "content": "All customer workshop rooms require at least 2 weeks advance booking. Executive Hall B and Main Auditorium C include hybrid streaming equipment, dual whiteboards, and dedicated audio technicians. Additional flipcharts and breakout seating must be reserved 5 business days prior."
+  },
+  {
+    "doc_id": "Doc_31",
+    "section": "§1",
+    "title": "Event Cancellation & Refund Tier Policy",
+    "content": "Event cancellations are subject to structured refund timelines. Cancellations made more than 30 days prior to the event date receive a 100% full refund. Cancellations made between 14 and 30 days prior receive a 50% refund."
+  },
+  {
+    "doc_id": "Doc_31",
+    "section": "§4",
+    "title": "Late Cancellation Penalties & Emergency Forfeiture",
+    "content": "Cancellations notice provided less than 14 days prior to event commencement will result in 0% refund and full forfeiture of room reservation deposits. Emergency waivers require VP-level written approval."
+  },
+  {
+    "doc_id": "Doc_45",
+    "section": "§1",
+    "title": "Catering Services & Dietary Compliance",
+    "content": "Standard event catering options include Continental Breakfast ($20/head), Working Lunch Buffet ($35/head), and Premium Reception ($60/head). All catering packages accommodate vegetarian, vegan, gluten-free, and kosher dietary requests if specified 72 hours prior."
+  },
+  {
+    "doc_id": "Doc_45",
+    "section": "§2",
+    "title": "Alcohol Policy & External Vendor Restrictions",
+    "content": "External food and beverage vendors are strictly prohibited on company premises. Alcohol service is restricted to Premium Reception packages and requires licensed corporate bartending staff with prior HR clearance."
+  },
+  {
+    "doc_id": "Doc_58",
+    "section": "§1",
+    "title": "Domestic Travel & Accommodations Policy",
+    "content": "Domestic business travel requires manager approval at least 7 days in advance. Flight bookings must be Economy Class on preferred partner airlines. Hotel accommodation per diem is capped at $250/night in tier-1 cities and $180/night in tier-2 cities."
+  },
+  {
+    "doc_id": "Doc_58",
+    "section": "§2",
+    "title": "International Travel & Visa Clearance Policy",
+    "content": "International business travel requires Director-level pre-approval at least 21 days in advance. Premium Economy is permitted for non-stop flights exceeding 8 hours. Travelers must obtain corporate travel insurance and valid visa documentation prior to ticket issuance."
+  },
+  {
+    "doc_id": "Doc_72",
+    "section": "§1",
+    "title": "Expense Reimbursement & Receipt Guidelines",
+    "content": "All travel and event expense claims must be submitted via the Concur portal within 14 calendar days post-event. Itemized receipts are mandatory for all expenses exceeding $25. Mileage reimbursement is fixed at $0.67 per mile."
+  }
+]

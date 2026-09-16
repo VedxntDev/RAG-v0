@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  streaming-live-rag:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=auto
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - .:/app
+    command: python3 -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
