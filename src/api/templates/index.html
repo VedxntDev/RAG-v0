@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="min-h-full bg-slate-950 text-slate-100 select-none">
+<html lang="en" class="min-h-full bg-neutral-950 text-neutral-100 select-none">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,33 +7,34 @@
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* macOS System Glassmorphism & Sizing Fixes */
+    /* Warm Charcoal & Obsidian Theme (Strictly NO Blue) */
     html, body {
       min-height: 100%;
       width: 100%;
       overflow-x: hidden;
+      background-color: #090a0f;
     }
     .mac-window {
-      background: rgba(15, 23, 42, 0.90);
+      background: rgba(18, 20, 26, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
     .mac-sidebar {
-      background: rgba(30, 41, 59, 0.4);
+      background: rgba(24, 27, 35, 0.5);
       border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
     .mac-box {
-      background: rgba(30, 41, 59, 0.5);
+      background: rgba(26, 29, 38, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
     }
     .mac-box-hover {
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .mac-box-hover:hover {
-      background: rgba(51, 65, 85, 0.6);
+      background: rgba(38, 42, 54, 0.8);
       border-color: rgba(255, 255, 255, 0.18);
       transform: translateY(-1px);
     }
@@ -41,23 +42,36 @@
     .traffic-yellow { background: #ffbd2e; border: 1px solid #dea123; }
     .traffic-green { background: #27c939; border: 1px solid #1ab029; }
     
-    .citation-tag { cursor: pointer; transition: all 0.15s ease; }
-    .citation-tag:hover { transform: translateY(-1px); filter: brightness(1.2); }
+    .citation-tag {
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .citation-tag:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.25);
+    }
 
-    /* Fluid Scrollbar */
+    /* Motion Effects */
+    @keyframes pulse-emerald {
+      0%, 100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
+      50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+    }
+    .motion-pulse-emerald { animation: pulse-emerald 2s infinite ease-in-out; }
+
+    /* Custom Smooth Scrollbar */
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
   </style>
 </head>
-<body class="min-h-screen w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black p-2 sm:p-4 md:p-6 flex flex-col justify-center items-center overflow-x-hidden">
+<body class="min-h-screen w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-black p-2 sm:p-4 md:p-6 flex flex-col justify-center items-center overflow-x-hidden">
 
-  <!-- macOS Desktop Application Window Frame (Fluid Sizing) -->
-  <div class="mac-window w-full max-w-7xl h-[88vh] min-h-[640px] rounded-xl flex flex-col overflow-hidden relative border border-slate-700/60 shadow-2xl">
+  <!-- macOS Window Frame (Fluid Sizing) -->
+  <div class="mac-window w-full max-w-7xl h-[88vh] min-h-[640px] rounded-xl flex flex-col overflow-hidden relative border border-neutral-800 shadow-2xl">
     
     <!-- macOS Window Title Bar (Header) -->
-    <header class="h-10 bg-slate-900/90 border-b border-slate-800/80 px-4 flex items-center justify-between shrink-0 select-none">
+    <header class="h-10 bg-neutral-900/90 border-b border-neutral-800/80 px-4 flex items-center justify-between shrink-0 select-none">
       <!-- Traffic Light Buttons -->
       <div class="flex items-center gap-2 w-24">
         <div class="w-3 h-3 rounded-full traffic-red shadow-sm cursor-pointer"></div>
@@ -66,19 +80,19 @@
       </div>
 
       <!-- App Title -->
-      <div class="flex items-center gap-2 text-xs font-semibold text-slate-300 tracking-wide">
-        <i class="fa-brands fa-apple text-slate-400"></i>
+      <div class="flex items-center gap-2 text-xs font-semibold text-neutral-300 tracking-wide font-sans">
+        <i class="fa-brands fa-apple text-neutral-400"></i>
         <span>Streaming Live RAG Studio</span>
         <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">v1.0.0</span>
       </div>
 
       <!-- Right Window Tools -->
       <div class="flex items-center gap-3 w-48 justify-end text-xs">
-        <button onclick="toggleCorpusModal()" class="text-slate-400 hover:text-slate-200 transition flex items-center gap-1.5 font-mono text-[11px]">
+        <button onclick="toggleCorpusModal()" class="text-neutral-400 hover:text-neutral-200 transition flex items-center gap-1.5 font-mono text-[11px] active:scale-95">
           <i class="fa-solid fa-database text-emerald-400"></i>
           <span>Corpus</span>
         </button>
-        <button onclick="resetSession()" class="text-slate-400 hover:text-red-400 transition flex items-center gap-1.5 font-mono text-[11px]">
+        <button onclick="resetSession()" class="text-neutral-400 hover:text-red-400 transition flex items-center gap-1.5 font-mono text-[11px] active:scale-95">
           <i class="fa-solid fa-rotate-left"></i>
           <span>Reset</span>
         </button>
@@ -93,139 +107,139 @@
         
         <!-- Section: Test Scenarios -->
         <div>
-          <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 px-1">
+          <div class="flex items-center justify-between text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-2 px-1">
             <span>Test Scenarios</span>
-            <i class="fa-solid fa-sliders text-slate-500"></i>
+            <i class="fa-solid fa-sliders text-neutral-500"></i>
           </div>
 
           <div class="space-y-1.5 font-sans">
-            <button onclick="loadPreset('provisional')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
+            <button onclick="loadPreset('provisional')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
               <div class="w-5 h-5 rounded bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
                 <i class="fa-solid fa-bolt text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-emerald-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-emerald-400 transition">
                   <span>Provisional Search</span>
-                  <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 px-1 rounded">G2</span>
+                  <span class="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-1 rounded">G2</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">Fires mid-stream early search.</p>
+                <p class="text-[10px] text-neutral-400 truncate">Fires mid-stream early search.</p>
               </div>
             </button>
 
-            <button onclick="loadPreset('compound')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
-              <div class="w-5 h-5 rounded bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 shrink-0 mt-0.5">
+            <button onclick="loadPreset('compound')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
+              <div class="w-5 h-5 rounded bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
                 <i class="fa-solid fa-diagram-project text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-teal-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-amber-400 transition">
                   <span>Multi-Intent Fusion</span>
-                  <span class="text-[9px] font-mono text-teal-500 bg-teal-500/10 px-1 rounded">G3</span>
+                  <span class="text-[9px] font-mono text-amber-400 bg-amber-500/10 px-1 rounded">G3</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">3 sub-queries & RRF fusion.</p>
+                <p class="text-[10px] text-neutral-400 truncate">3 sub-queries & RRF fusion.</p>
               </div>
             </button>
 
-            <button onclick="loadPreset('delta')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
+            <button onclick="loadPreset('delta')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
               <div class="w-5 h-5 rounded bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
                 <i class="fa-solid fa-code-commit text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-purple-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-purple-400 transition">
                   <span>Delta Refinement</span>
-                  <span class="text-[9px] font-mono text-purple-500 bg-purple-500/10 px-1 rounded">G5</span>
+                  <span class="text-[9px] font-mono text-purple-400 bg-purple-500/10 px-1 rounded">G5</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">In-place update ($v1 \to v2$).</p>
+                <p class="text-[10px] text-neutral-400 truncate">In-place update ($v1 \to v2$).</p>
               </div>
             </button>
 
-            <button onclick="loadPreset('presentation')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
-              <div class="w-5 h-5 rounded bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+            <button onclick="loadPreset('presentation')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
+              <div class="w-5 h-5 rounded bg-stone-500/10 border border-stone-500/30 flex items-center justify-center text-stone-300 shrink-0 mt-0.5">
                 <i class="fa-solid fa-eye-slash text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-blue-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-stone-300 transition">
                   <span>Presentation Suppress</span>
-                  <span class="text-[9px] font-mono text-blue-500 bg-blue-500/10 px-1 rounded">0 search</span>
+                  <span class="text-[9px] font-mono text-stone-300 bg-stone-500/10 px-1 rounded">0 search</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">Reformats session context.</p>
+                <p class="text-[10px] text-neutral-400 truncate">Reformats session context.</p>
               </div>
             </button>
 
-            <button onclick="loadPreset('incomplete')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
-              <div class="w-5 h-5 rounded bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+            <button onclick="loadPreset('incomplete')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
+              <div class="w-5 h-5 rounded bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 shrink-0 mt-0.5">
                 <i class="fa-solid fa-hourglass-half text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-amber-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-orange-400 transition">
                   <span>Semantically Incomplete</span>
-                  <span class="text-[9px] font-mono text-amber-500 bg-amber-500/10 px-1 rounded">WAIT</span>
+                  <span class="text-[9px] font-mono text-orange-400 bg-orange-500/10 px-1 rounded">WAIT</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">Suppresses incomplete "in".</p>
+                <p class="text-[10px] text-neutral-400 truncate">Suppresses incomplete "in".</p>
               </div>
             </button>
 
-            <button onclick="loadPreset('uncertainty')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group">
+            <button onclick="loadPreset('uncertainty')" class="preset-btn mac-box mac-box-hover w-full p-2 text-left flex items-start gap-2 group active:scale-[0.98]">
               <div class="w-5 h-5 rounded bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0 mt-0.5">
                 <i class="fa-solid fa-triangle-exclamation text-[10px]"></i>
               </div>
               <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-center text-xs font-semibold text-slate-200 group-hover:text-rose-400">
+                <div class="flex justify-between items-center text-xs font-semibold text-neutral-200 group-hover:text-rose-400 transition">
                   <span>Uncertainty Flag</span>
-                  <span class="text-[9px] font-mono text-rose-500 bg-rose-500/10 px-1 rounded">G4</span>
+                  <span class="text-[9px] font-mono text-rose-400 bg-rose-500/10 px-1 rounded">G4</span>
                 </div>
-                <p class="text-[10px] text-slate-400 truncate">Missing evidence flag.</p>
+                <p class="text-[10px] text-neutral-400 truncate">Missing evidence flag.</p>
               </div>
             </button>
           </div>
         </div>
 
-        <!-- Section: macOS Streaming Config Box -->
+        <!-- Section: Streaming Config Box -->
         <div class="mt-auto mac-box p-2.5 space-y-2.5">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-slate-300 font-semibold flex items-center gap-1.5">
+            <span class="text-neutral-300 font-semibold flex items-center gap-1.5">
               <i class="fa-solid fa-microphone text-emerald-400"></i>
               Stream Simulator
             </span>
             <label class="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" id="toggle-stream" class="sr-only peer" checked>
-              <div class="w-8 h-4 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-emerald-500"></div>
+              <div class="w-8 h-4 bg-neutral-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-emerald-500"></div>
             </label>
           </div>
           <div>
-            <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+            <div class="flex justify-between text-[10px] font-mono text-neutral-400 mb-1">
               <span>Playback Rate</span>
               <span id="speed-label" class="text-emerald-400">300 ms / word</span>
             </div>
-            <input type="range" id="speed-slider" min="100" max="800" step="50" value="300" class="w-full h-1 bg-slate-800 rounded appearance-none cursor-pointer accent-emerald-500">
+            <input type="range" id="speed-slider" min="100" max="800" step="50" value="300" class="w-full h-1 bg-neutral-800 rounded appearance-none cursor-pointer accent-emerald-500">
           </div>
         </div>
       </aside>
 
       <!-- Center macOS Active Terminal Workspace (6 cols) -->
-      <main class="lg:col-span-6 flex flex-col bg-slate-950/90 overflow-hidden relative">
+      <main class="lg:col-span-6 flex flex-col bg-neutral-950/90 overflow-hidden relative">
         
         <!-- Sub-Header Status Ribbon -->
-        <div class="h-9 bg-slate-900/60 border-b border-slate-800/80 px-4 flex items-center justify-between shrink-0 font-mono text-[11px]">
+        <div class="h-9 bg-neutral-900/70 border-b border-neutral-800/80 px-4 flex items-center justify-between shrink-0 font-mono text-[11px]">
           <div class="flex items-center gap-2">
-            <span class="text-slate-500">Session:</span>
+            <span class="text-neutral-500">Session:</span>
             <span class="text-emerald-400 font-semibold" id="session-id-display">sess_active_01</span>
           </div>
           <div class="flex items-center gap-3">
-            <span class="text-slate-500">Version:</span>
+            <span class="text-neutral-500">Version:</span>
             <span id="session-version-badge" class="font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded text-[10px]">v1</span>
           </div>
         </div>
 
         <!-- Live Streaming Activity Audio Bar -->
-        <div id="live-buffer-bar" class="hidden border-b border-slate-800/80 bg-slate-900/90 p-3 shrink-0 transition-all duration-300">
-          <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+        <div id="live-buffer-bar" class="hidden border-b border-neutral-800/80 bg-neutral-900/90 p-3 shrink-0 transition-all duration-300">
+          <div class="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-1.5">
             <span class="flex items-center gap-2 text-emerald-400 font-semibold">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
               Streaming Audio Chunk Buffer...
             </span>
-            <span id="buffer-timestamp" class="text-slate-400">t = 0.0s</span>
+            <span id="buffer-timestamp" class="text-neutral-400">t = 0.0s</span>
           </div>
-          <div class="mac-box p-2 bg-slate-950 text-xs font-mono text-slate-200 leading-snug italic border-emerald-500/30">
+          <div class="mac-box p-2 bg-neutral-950 text-xs font-mono text-neutral-200 leading-snug italic border-emerald-500/30">
             <span id="live-buffer-text">Initializing stream...</span>
           </div>
         </div>
@@ -233,25 +247,25 @@
         <!-- Chat Stream Boxy Terminal Area -->
         <div id="chat-stream-container" class="flex-1 p-4 overflow-y-auto space-y-3 font-sans">
           <!-- Welcome Box -->
-          <div class="mac-box p-3.5 bg-slate-900/80 border-slate-800 space-y-1.5">
+          <div class="mac-box p-3.5 bg-neutral-900/80 border-neutral-800 space-y-1.5">
             <div class="flex items-center justify-between text-xs font-semibold text-emerald-400">
-              <span class="flex items-center gap-1.5">
+              <span class="flex items-center gap-1.5 font-mono">
                 <i class="fa-solid fa-terminal"></i>
-                Full-Duplex RAG Terminal
+                Full-Duplex RAG Engine Studio
               </span>
-              <span class="text-[10px] font-mono text-slate-500">macOS Studio Mode</span>
+              <span class="text-[10px] font-mono text-neutral-500">macOS Studio Mode</span>
             </div>
-            <p class="text-xs text-slate-300 leading-relaxed font-normal">
-              Click any scenario on the left panel or type below. Watch the zero-LLM controller execute real-time intent checks, multi-query RRF fusion, grounded synthesis with section citations (`[Doc_12 §1]`), and in-place answer updates.
+            <p class="text-xs text-neutral-300 leading-relaxed font-normal">
+              Select any scenario on the left panel or type a query below. Watch the zero-LLM controller execute real-time intent stability checks, multi-query RRF fusion, grounded synthesis with section citations (`[Doc_12 §1]`), and in-place answer updates.
             </p>
           </div>
         </div>
 
         <!-- Bottom Text Entry Bar -->
-        <form id="chat-form" onsubmit="handleUserSubmit(event)" class="p-3 border-t border-slate-800/80 bg-slate-900/60 shrink-0">
+        <form id="chat-form" onsubmit="handleUserSubmit(event)" class="p-3 border-t border-neutral-800/80 bg-neutral-900/60 shrink-0">
           <div class="relative flex items-center">
-            <input type="text" id="user-input" placeholder="Type a query or test utterance..." class="w-full bg-slate-950 border border-slate-700/80 rounded-lg pl-3.5 pr-20 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition font-sans">
-            <button type="submit" id="send-btn" class="absolute right-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs px-3 py-1.5 rounded-md transition flex items-center gap-1 shadow-md">
+            <input type="text" id="user-input" placeholder="Type a query or test utterance..." class="w-full bg-neutral-950 border border-neutral-700/80 rounded-lg pl-3.5 pr-20 py-2.5 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition font-sans">
+            <button type="submit" id="send-btn" class="absolute right-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs px-3 py-1.5 rounded-md transition flex items-center gap-1 shadow-md active:scale-95">
               <span>Send</span>
               <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </button>
@@ -264,46 +278,46 @@
         
         <!-- Controller Decision Box -->
         <div class="mac-box p-2.5 space-y-1.5">
-          <div class="flex items-center justify-between text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+          <div class="flex items-center justify-between text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
             <span>Controller Decision</span>
-            <i class="fa-solid fa-microchip text-slate-500"></i>
+            <i class="fa-solid fa-microchip text-neutral-500"></i>
           </div>
           <div id="panel-decision-badge" class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-center tracking-wide">
             WAITING FOR INPUT
           </div>
-          <p id="panel-decision-reason" class="text-[10px] font-mono text-slate-400 truncate">No active stream</p>
+          <p id="panel-decision-reason" class="text-[10px] font-mono text-neutral-400 truncate">No active stream</p>
         </div>
 
         <!-- Sub-Queries Box -->
         <div class="mac-box p-2.5 space-y-1.5">
-          <div class="flex items-center justify-between text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+          <div class="flex items-center justify-between text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
             <span>Decomposed Sub-Queries</span>
-            <i class="fa-solid fa-network-wired text-slate-500"></i>
+            <i class="fa-solid fa-network-wired text-neutral-500"></i>
           </div>
           <div id="panel-subqueries-list" class="space-y-1 min-h-[32px]">
-            <span class="text-slate-500 italic text-[10px]">None extracted</span>
+            <span class="text-neutral-500 italic text-[10px]">None extracted</span>
           </div>
         </div>
 
         <!-- macOS Boxy Metric Tiles -->
         <div class="mac-box p-2.5 space-y-1.5">
-          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Performance Telemetry</span>
+          <span class="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider block">Performance Telemetry</span>
           <div class="grid grid-cols-2 gap-1.5 text-xs">
-            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-              <span class="text-[8px] font-mono text-slate-400 block uppercase">TTFT</span>
+            <div class="bg-neutral-950 p-1.5 rounded border border-neutral-800">
+              <span class="text-[8px] font-mono text-neutral-400 block uppercase">TTFT</span>
               <span id="metric-ttft" class="font-mono font-bold text-emerald-400 text-xs">-- ms</span>
             </div>
-            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-              <span class="text-[8px] font-mono text-slate-400 block uppercase">Latency</span>
-              <span id="metric-latency" class="font-mono font-bold text-teal-400 text-xs">-- ms</span>
+            <div class="bg-neutral-950 p-1.5 rounded border border-neutral-800">
+              <span class="text-[8px] font-mono text-neutral-400 block uppercase">Latency</span>
+              <span id="metric-latency" class="font-mono font-bold text-amber-400 text-xs">-- ms</span>
             </div>
-            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-              <span class="text-[8px] font-mono text-slate-400 block uppercase">Cost</span>
+            <div class="bg-neutral-950 p-1.5 rounded border border-neutral-800">
+              <span class="text-[8px] font-mono text-neutral-400 block uppercase">Cost</span>
               <span id="metric-cost" class="font-mono font-bold text-purple-400 text-xs">$0.000</span>
             </div>
-            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-              <span class="text-[8px] font-mono text-slate-400 block uppercase">Recall@K</span>
-              <span id="metric-recall" class="font-mono font-bold text-blue-400 text-xs">--</span>
+            <div class="bg-neutral-950 p-1.5 rounded border border-neutral-800">
+              <span class="text-[8px] font-mono text-neutral-400 block uppercase">Recall@K</span>
+              <span id="metric-recall" class="font-mono font-bold text-emerald-400 text-xs">--</span>
             </div>
           </div>
         </div>
@@ -311,10 +325,10 @@
         <!-- Structured Telemetry JSON Viewer -->
         <div class="mac-box p-2.5 flex-1 flex flex-col min-h-[120px]">
           <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">JSON Event (G6 Schema)</span>
-            <button onclick="copyTelemetry()" class="text-[9px] font-mono text-slate-400 hover:text-emerald-400 transition"><i class="fa-regular fa-copy"></i> Copy</button>
+            <span class="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">JSON Event (G6 Schema)</span>
+            <button onclick="copyTelemetry()" class="text-[9px] font-mono text-neutral-400 hover:text-emerald-400 transition"><i class="fa-regular fa-copy"></i> Copy</button>
           </div>
-          <pre id="panel-raw-json" class="flex-1 font-mono text-[9px] text-emerald-400 bg-slate-950 p-2 rounded border border-slate-800 overflow-x-auto max-h-36 leading-tight">{}</pre>
+          <pre id="panel-raw-json" class="flex-1 font-mono text-[9px] text-emerald-400 bg-neutral-950 p-2 rounded border border-neutral-800 overflow-x-auto max-h-36 leading-tight">{}</pre>
         </div>
       </aside>
 
@@ -323,31 +337,31 @@
 
   <!-- Corpus Manager Modal -->
   <div id="corpus-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4">
-    <div class="mac-window rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-slate-700 shadow-2xl overflow-hidden">
-      <div class="h-10 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between">
-        <span class="font-semibold text-xs text-slate-200 flex items-center gap-2 font-mono">
+    <div class="mac-window rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-neutral-700 shadow-2xl overflow-hidden">
+      <div class="h-10 bg-neutral-900 border-b border-neutral-800 px-4 flex items-center justify-between">
+        <span class="font-semibold text-xs text-neutral-200 flex items-center gap-2 font-mono">
           <i class="fa-solid fa-database text-emerald-400"></i>
           Corpus Index Manager
         </span>
-        <button onclick="toggleCorpusModal()" class="text-slate-400 hover:text-slate-200 text-xs"><i class="fa-solid fa-xmark"></i></button>
+        <button onclick="toggleCorpusModal()" class="text-neutral-400 hover:text-neutral-200 text-xs"><i class="fa-solid fa-xmark"></i></button>
       </div>
       
       <div class="p-4 flex-1 overflow-y-auto space-y-4">
         <div>
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2">Indexed Document Chunks</span>
+          <span class="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-2">Indexed Document Chunks</span>
           <div id="corpus-list-container" class="space-y-2 text-xs font-sans">
-            <div class="text-slate-400 italic">Loading corpus chunks...</div>
+            <div class="text-neutral-400 italic">Loading corpus chunks...</div>
           </div>
         </div>
 
-        <div class="border-t border-slate-800 pt-3">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2">Add Custom Document Chunk</span>
+        <div class="border-t border-neutral-800 pt-3">
+          <span class="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-2">Add Custom Document Chunk</span>
           <div class="grid grid-cols-3 gap-2 mb-2 text-xs font-mono">
-            <input type="text" id="add-doc-id" placeholder="Doc_99" class="bg-slate-950 border border-slate-800 rounded p-2 text-slate-200">
-            <input type="text" id="add-section" placeholder="§1" class="bg-slate-950 border border-slate-800 rounded p-2 text-slate-200">
-            <input type="text" id="add-title" placeholder="Document Title" class="bg-slate-950 border border-slate-800 rounded p-2 text-slate-200 font-sans">
+            <input type="text" id="add-doc-id" placeholder="Doc_99" class="bg-neutral-950 border border-neutral-800 rounded p-2 text-neutral-200">
+            <input type="text" id="add-section" placeholder="§1" class="bg-neutral-950 border border-neutral-800 rounded p-2 text-neutral-200">
+            <input type="text" id="add-title" placeholder="Document Title" class="bg-neutral-950 border border-neutral-800 rounded p-2 text-neutral-200 font-sans">
           </div>
-          <textarea id="add-content" rows="3" placeholder="Chunk text content..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-xs text-slate-200 mb-2 font-sans"></textarea>
+          <textarea id="add-content" rows="3" placeholder="Chunk text content..." class="w-full bg-neutral-950 border border-neutral-800 rounded p-2 text-xs text-neutral-200 mb-2 font-sans"></textarea>
           <button onclick="addCustomChunk()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs px-3 py-1.5 rounded transition">
             + Index Custom Chunk into RAG Engine
           </button>
@@ -357,12 +371,12 @@
   </div>
 
   <!-- Citation Popover -->
-  <div id="citation-popover" class="fixed z-50 hidden bg-slate-900 border border-purple-500/40 rounded-lg p-3 shadow-2xl max-w-sm text-xs space-y-1 backdrop-blur-xl">
-    <div class="flex justify-between items-center border-b border-slate-800 pb-1 font-mono">
+  <div id="citation-popover" class="fixed z-50 hidden bg-neutral-900 border border-purple-500/40 rounded-lg p-3 shadow-2xl max-w-sm text-xs space-y-1 backdrop-blur-xl">
+    <div class="flex justify-between items-center border-b border-neutral-800 pb-1 font-mono">
       <span font-bold text-purple-400 id="pop-cit-title">Doc_12 §1</span>
-      <button onclick="hideCitationPopover()" class="text-slate-500 hover:text-slate-300 text-xs"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="hideCitationPopover()" class="text-neutral-500 hover:text-neutral-300 text-xs"><i class="fa-solid fa-xmark"></i></button>
     </div>
-    <p id="pop-cit-content" class="text-slate-300 leading-snug text-[11px] font-sans">Loading chunk content...</p>
+    <p id="pop-cit-content" class="text-neutral-300 leading-snug text-[11px] font-sans">Loading chunk content...</p>
   </div>
 
   <script>
@@ -412,12 +426,12 @@
       document.getElementById('session-id-display').textContent = activeSessionId;
       document.getElementById('session-version-badge').textContent = 'v1';
       document.getElementById('chat-stream-container').innerHTML = `
-        <div class="mac-box p-3 bg-slate-900/80 border-slate-800 space-y-1.5">
+        <div class="mac-box p-3 bg-neutral-900/80 border-neutral-800 space-y-1.5">
           <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs">
             <i class="fa-solid fa-rotate-left"></i>
             <span>Session Reset Complete</span>
           </div>
-          <p class="text-xs text-slate-400">Ephemeral state discarded. Active Session ID: <span class="font-mono text-emerald-400">${activeSessionId}</span>.</p>
+          <p class="text-xs text-neutral-400">Ephemeral state discarded. Active Session ID: <span class="font-mono text-emerald-400">${activeSessionId}</span>.</p>
         </div>
       `;
       resetTelemetryPanels();
@@ -427,7 +441,7 @@
       document.getElementById('panel-decision-badge').textContent = 'WAITING FOR INPUT';
       document.getElementById('panel-decision-badge').className = 'text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 text-center tracking-wide';
       document.getElementById('panel-decision-reason').textContent = 'No stream active';
-      document.getElementById('panel-subqueries-list').innerHTML = '<span class="text-slate-500 italic text-[10px]">None extracted</span>';
+      document.getElementById('panel-subqueries-list').innerHTML = '<span class="text-neutral-500 italic text-[10px]">None extracted</span>';
       document.getElementById('metric-ttft').textContent = '-- ms';
       document.getElementById('metric-latency').textContent = '-- ms';
       document.getElementById('metric-cost').textContent = '$0.000';
@@ -548,28 +562,28 @@
       });
 
       const sysBubble = document.createElement('div');
-      sysBubble.className = 'mac-box p-3 bg-slate-900/90 border-slate-800 space-y-1.5';
+      sysBubble.className = 'mac-box p-3 bg-neutral-900/90 border-neutral-800 space-y-1.5';
 
       let triggerBadge = '';
       if (event.retrieval_events && event.retrieval_events.length > 0) {
         const trg = event.retrieval_events[0].trigger;
         triggerBadge = `<span class="text-[9px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">RETRIEVE (${trg})</span>`;
       } else if (event.answer === "[Awaiting full utterance completion...]") {
-        triggerBadge = `<span class="text-[9px] font-mono font-bold uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded">WAIT (INCOMPLETE)</span>`;
+        triggerBadge = `<span class="text-[9px] font-mono font-bold uppercase bg-orange-500/20 text-orange-400 border border-orange-500/30 px-2 py-0.5 rounded">WAIT (INCOMPLETE)</span>`;
       } else {
-        triggerBadge = `<span class="text-[9px] font-mono font-bold uppercase bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded">NO_RETRIEVAL (PRESENTATION)</span>`;
+        triggerBadge = `<span class="text-[9px] font-mono font-bold uppercase bg-stone-500/20 text-stone-300 border border-stone-500/30 px-2 py-0.5 rounded">NO_RETRIEVAL (PRESENTATION)</span>`;
       }
 
       sysBubble.innerHTML = `
-        <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 text-xs">
+        <div class="flex items-center justify-between border-b border-neutral-800 pb-1.5 text-xs">
           <div class="flex items-center gap-2">
-            <i class="fa-solid fa-robot text-emerald-400 text-xs"></i>
-            <span class="font-semibold text-slate-200">Engine Response</span>
+            <i class="fa-solid fa-server text-emerald-400 text-xs"></i>
+            <span class="font-semibold text-neutral-200">Engine Response</span>
             ${triggerBadge}
           </div>
-          <span class="font-mono text-[10px] text-slate-500">v${activeVersion}</span>
+          <span class="font-mono text-[10px] text-neutral-500">v${activeVersion}</span>
         </div>
-        <div class="text-xs text-slate-200 leading-relaxed font-sans">${formattedAnswer.replace(/\n/g, '<br/>')}</div>
+        <div class="text-xs text-neutral-200 leading-relaxed font-sans">${formattedAnswer.replace(/\n/g, '<br/>')}</div>
         ${event.uncertainty ? `<div class="bg-rose-500/10 border border-rose-500/20 text-rose-300 text-[11px] p-2 rounded mt-1.5 font-medium"><i class="fa-solid fa-triangle-exclamation mr-1"></i> ${escapeHtml(event.uncertainty)}</div>` : ''}
       `;
 
@@ -590,24 +604,24 @@
         reason.textContent = `Triggered search at t = ${event.retrieval_events[0].timestamp_s}s`;
       } else if (event.answer === "[Awaiting full utterance completion...]") {
         badge.textContent = 'WAIT (INCOMPLETE)';
-        badge.className = 'text-xs font-mono font-bold px-2.5 py-1 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30 text-center tracking-wide';
+        badge.className = 'text-xs font-mono font-bold px-2.5 py-1 rounded bg-orange-500/20 text-orange-400 border border-orange-500/30 text-center tracking-wide';
         reason.textContent = 'Utterance ends with trailing connector';
       } else {
         badge.textContent = 'NO_RETRIEVAL (SUPPRESSED)';
-        badge.className = 'text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30 text-center tracking-wide';
+        badge.className = 'text-xs font-mono font-bold px-2.5 py-1 rounded bg-stone-500/20 text-stone-300 border border-stone-500/30 text-center tracking-wide';
         reason.textContent = 'Presentation keyword detected (0 search calls)';
       }
 
       const sqList = document.getElementById('panel-subqueries-list');
       if (event.sub_queries && event.sub_queries.length > 0) {
         sqList.innerHTML = event.sub_queries.map(sq => 
-          `<div class="bg-slate-950 border border-slate-800 p-1.5 rounded text-slate-200 text-[10px] font-sans font-medium flex items-center gap-1.5">
+          `<div class="bg-neutral-950 border border-neutral-800 p-1.5 rounded text-neutral-200 text-[10px] font-sans font-medium flex items-center gap-1.5">
             <i class="fa-solid fa-arrow-right text-emerald-400 text-[9px]"></i>
             <span class="truncate">${escapeHtml(sq)}</span>
           </div>`
         ).join('');
       } else {
-        sqList.innerHTML = '<span class="text-slate-500 italic text-[10px]">None extracted</span>';
+        sqList.innerHTML = '<span class="text-neutral-500 italic text-[10px]">None extracted</span>';
       }
 
       const t = event.telemetry || {};
@@ -638,16 +652,16 @@
         const resp = await fetch('/api/corpus');
         const chunks = await resp.json();
         container.innerHTML = chunks.map(c => `
-          <div class="mac-box p-2 bg-slate-950 border-slate-800 space-y-1">
+          <div class="mac-box p-2 bg-neutral-950 border-neutral-800 space-y-1">
             <div class="flex justify-between items-center font-mono text-[10px]">
               <span class="text-purple-400 font-bold">${c.doc_id} ${c.section}</span>
-              <span class="text-slate-400 font-sans">${c.title || ''}</span>
+              <span class="text-neutral-400 font-sans">${c.title || ''}</span>
             </div>
-            <p class="text-slate-300 text-[10px] leading-relaxed font-sans">${escapeHtml(c.content)}</p>
+            <p class="text-neutral-300 text-[10px] leading-relaxed font-sans">${escapeHtml(c.content)}</p>
           </div>
         `).join('');
       } catch (err) {
-        container.innerHTML = '<div class="text-slate-400">Failed to load corpus.</div>';
+        container.innerHTML = '<div class="text-neutral-400">Failed to load corpus.</div>';
       }
     }
 
